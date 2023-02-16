@@ -5,7 +5,7 @@
 
 The design contains 3 layers of abstraction:
 
-1. **Atoms**: Exposes core components that should not have dependencies, those that have dependencies will be with the same internal packages and as far as possible they will be utility packages. For example: Input, Label, Button, Icon, Logo
+1. **Atoms**: Exposes core components that should not have dependencies, those that have dependencies will be with the same internal packages and as far as possible they will be utility packages. For example: Input, Label, RoundProgress, Icon, Logo
 
 2. **Molecules**: Exposes components that are mainly made up of Atoms. For example: ChannelItem, Poster
    
