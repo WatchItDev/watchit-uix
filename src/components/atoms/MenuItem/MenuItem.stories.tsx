@@ -1,13 +1,11 @@
-// Imports
+// IMPORTS
 import React from "react"
 import {
     ComponentStory,
     ComponentMeta
 } from "@storybook/react";
-
 import MenuItem from "./MenuItem";
-import SearchIcon from '@mui/icons-material/Search';
-import { IconBrandSafari} from "@tabler/icons";
+import { IconBrandSafari } from "@components/atoms/Icons";
 
 export default {
     title: "Watchit Atoms/ MenuItem",
