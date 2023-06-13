@@ -1,16 +1,14 @@
-import React, {FC, PropsWithChildren} from "react";
+import React, { FC } from "react";
 import {
     Typography,
     styled,
     Box,
     BoxProps,
     CircularProgress,
-    CircularProgressProps,
-    TypographyProps
+    CircularProgressProps
 } from "@mui/material";
 
 export type RoundProgressProps = {
-
   percentage?: number
   progressBarColor?: string
   progressBackgroundColor?: string
@@ -51,18 +49,18 @@ export const RoundProgress: FC<RoundProgressProps> = (props) : JSX.Element => {
 const RoundProgressWrapper = styled(Box,
     {
         shouldForwardProp: (prop) => (prop !== 'size')
-    })<BoxProps & {size: number}>((props) => ({
+    })<BoxProps & {size: number}>(({size}) => ({
     display: 'flex',
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
-    width: `${props.size}px`,
-    height:`${props.size}px`,
+    width: `${size}px`,
+    height:`${size}px`,
 }))
 
 const RoundProgressTextWrapper = styled(Box, {
     shouldForwardProp: (prop) => (prop !== 'textColor')
-})<BoxProps & {textColor: string}>((props) => ({
+})<BoxProps & {textColor: string}>(({textColor}) => ({
     position: 'absolute',
     width: '100%',
     height:'100%',
@@ -71,19 +69,19 @@ const RoundProgressTextWrapper = styled(Box, {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: props.textColor,
+    color: textColor,
 }))
 
 const RoundProgressBackground = styled(CircularProgress,{
     shouldForwardProp: (prop) => (prop !== 'barColor')
-})<CircularProgressProps & {barColor: string}>  ( (props) => ({
+})<CircularProgressProps & {barColor: string}>  ( ({barColor}) => ({
     position: 'absolute',
-    color: props.barColor,
+    color: barColor,
     top: 0,
     left: 0,
     zIndex: 1,
     'svg,circle': {
-        stroke: props.barColor
+        stroke: barColor
     }
 }))
 

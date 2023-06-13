@@ -4,7 +4,7 @@ import Poster from "./Poster";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: "Watchit Atoms/ Poster",
+    title: "Watchit Molecules/ Poster",
     component: Poster,
 } as ComponentMeta<typeof Poster>;
 

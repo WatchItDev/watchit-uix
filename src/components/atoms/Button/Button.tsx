@@ -18,9 +18,9 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) : JSX.Element 
   }
 
   return (
-    <ButtonWrapper
+    <MuiButton
       onClick={props.onClick} variant={getButtonVariant(props.variant)}
-      sx={{ padding: props.children ? '0.3rem 1rem' : '0.3rem 0.5rem' }}
+      sx={{ padding: props.children ? '0.3rem 1rem' : '0.3rem 0.5rem', backgroundColor: props.backgroundColor }}
     >
       <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
         {
@@ -39,12 +39,8 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) : JSX.Element 
           ) : <></>
         }
       </Box>
-    </ButtonWrapper>
+    </MuiButton>
   )
 }
-
-const ButtonWrapper = styled(MuiButton)<MuiButtonProps & { backgroundColor?: string }>((props) => ({
-  backgroundColor: props.backgroundColor
-}))
 
 export default Button

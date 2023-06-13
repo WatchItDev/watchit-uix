@@ -8,16 +8,16 @@ import {
 } from "@mui/material";
 
 export type MobileMenuItemProps = {
+  id: string
   icon: JSX.Element
   title: string
   active?: boolean
-  onClick?: () => void
+  onClick?: (id: string) => void
 }
 
 export const MobileMenuItem: FC<MobileMenuItemProps> = (props) : JSX.Element => {
-
   return (
-      <MobileMenuItemWrapper onClick={props.onClick} data-testid={'mobile-menu-item-wrapper'}>
+      <MobileMenuItemWrapper onClick={() => props?.onClick?.(props.id)} data-testid={'mobile-menu-item-wrapper'}>
         <MobileMenuItemIcon active={props.active}>{props.icon}</MobileMenuItemIcon>
         <MobileMenuItemText active={props.active}>{props.title}</MobileMenuItemText>
       </MobileMenuItemWrapper>
