@@ -95,8 +95,9 @@ export const globalComponentOverrides = {
         padding: '0.3rem 1rem',
         height: '45px',
         minWidth: '45px',
+        cursor: 'pointer',
         '&:hover': {
-          backgroundColor: 'rgba(209,210,211,0.05)'
+          opacity: 0.9
         }
       } as ComponentsOverrides['MuiButton']
     },
@@ -104,17 +105,24 @@ export const globalComponentOverrides = {
       {
         props: { variant: 'contained' },
         style: {
-          backgroundColor: '#1A1C20',
+          backgroundColor: 'rgba(26,28,32,0.8)',
           color: '#D1D2D3',
-          border: '1px solid transparent'
+          border: '1px solid rgba(218,224,236,0.2)',
+          '&:hover': {
+            border: '1px solid rgba(218,224,236,0.5)',
+            backgroundColor: '#1c1d21',
+          }
         },
       },
       {
         props: { variant: 'outlined' },
         style: {
-          backgroundColor: '#212328',
+          backgroundColor: 'rgba(26,28,32,0.8)',
           color: '#D1D2D3',
-          border: '1px solid #D1D2D3 !important'
+          border: '1px solid #D1D2D3 !important',
+          '&:hover': {
+            backgroundColor: '#1c1d21',
+          }
         },
       },
       {
@@ -122,7 +130,10 @@ export const globalComponentOverrides = {
         style: {
           backgroundColor: '#212328',
           color: '#D1D2D3',
-          border: '1px solid transparent'
+          border: '1px solid transparent',
+          '&:hover': {
+            backgroundColor: '#1c1d21',
+          }
         },
       },
     ]

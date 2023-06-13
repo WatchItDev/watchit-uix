@@ -88,19 +88,19 @@ describe('Theme', () => {
     it('should have valid palette primary light', () => {
       const palette = theme?.defaultTheme?.palette?.primary
       expect(palette).toBeDefined()
-      expect(palette.light).toBe('#e3f2fd')
+      expect(palette.light).toBe('#292d30')
     })
 
     it('should have valid palette primary main', () => {
       const palette = theme?.defaultTheme?.palette?.primary
       expect(palette).toBeDefined()
-      expect(palette.main).toBe('#2568a4')
+      expect(palette.main).toBe('#1A1C20')
     })
 
     it('should have valid palette primary dark', () => {
       const palette = theme?.defaultTheme?.palette?.primary
       expect(palette).toBeDefined()
-      expect(palette.dark).toBe('#1e5688')
+      expect(palette.dark).toBe('#16191c')
     })
 
     it('should have valid palette secondary light', () => {
@@ -196,7 +196,7 @@ describe('Theme', () => {
     it('should have valid palette grey 300', () => {
       const palette = theme?.defaultTheme?.palette?.grey[300]
       expect(palette).toBeDefined()
-      expect(palette).toBe('#e0e0e0')
+      expect(palette).toBe('#d1d2d3')
     })
 
     it('should have valid palette grey 500', () => {
@@ -226,19 +226,19 @@ describe('Theme', () => {
     it('should have valid palette text primary', () => {
       const palette = theme?.defaultTheme?.palette?.text.primary
       expect(palette).toBeDefined()
-      expect(palette).toBe('#616161')
+      expect(palette).toBe('#d1d2d3')
     })
 
     it('should have valid palette text secondary', () => {
       const palette = theme?.defaultTheme?.palette?.text.secondary
       expect(palette).toBeDefined()
-      expect(palette).toBe('#9e9e9e')
+      expect(palette).toBe('#eeeeee')
     })
 
     it('should have valid palette divider', () => {
       const palette = theme?.defaultTheme?.palette?.divider
       expect(palette).toBeDefined()
-      expect(palette).toBe('#eeeeee')
+      expect(palette).toBe('#9e9e9e')
     })
 
     it('should have valid palette background', () => {
@@ -250,7 +250,7 @@ describe('Theme', () => {
     it('should have valid palette background paper', () => {
       const palette = theme?.defaultTheme?.palette?.background.paper
       expect(palette).toBeDefined()
-      expect(palette).toBe('#ffffff')
+      expect(palette).toBe('#1A1C20')
     })
 
     it('should have valid shape border radius', () => {
