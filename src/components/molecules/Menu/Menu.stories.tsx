@@ -12,7 +12,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Menu> = (args) => {
   const [active, setActive] = useState('1')
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const handleToggleOpen = () => {
     setIsOpen((open) => !open)
   }

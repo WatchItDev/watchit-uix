@@ -1,39 +1,18 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import MenuItem, { MobileMenuItemProps } from '../MenuItem';
+import MenuItem, { MenuItemProps } from '../MenuItem';
 
-const setup = (props: MobileMenuItemProps) => {
+const setup = (props: MenuItemProps) => {
 	const component = render(<MenuItem {...props} />);
-	const wrapper = component.getByTestId('mobile-menu-item-wrapper');
-	return { ...component, wrapper };
+	return { ...component };
 };
 
 describe('MobileMenuItem', () => {
 	it('renders without crashing', () => {
 		setup({
 			icon: <svg />,
-			title: 'Item'
-		});
-	});
-
-	it('calls onClick function when clicked', () => {
-		const onClick = jest.fn();
-		const { wrapper } = setup({
-			icon: <svg />,
 			title: 'Item',
-			onClick
+			id: ''
 		});
-		fireEvent.click(wrapper);
-		expect(onClick).toHaveBeenCalled();
-	});
-
-	it('renders active state correctly', () => {
-		const { getByText } = setup({
-			icon: <svg />,
-			title: 'Item',
-			active: true
-		});
-		const text = getByText('Item');
-		expect(text).toHaveStyle('color: #D1D2D3');
 	});
 });

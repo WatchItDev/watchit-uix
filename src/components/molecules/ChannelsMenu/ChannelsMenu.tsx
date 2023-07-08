@@ -3,13 +3,13 @@ import { styled, Box, BoxProps, Typography } from "@mui/material";
 import Button from "../../atoms/Button";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 
-export type MobileMenuProps = {
+export type ChannelsMenuProps = {
   title: string,
   onBack?: () => void
   onForward?: () => void
 }
 
-export const ChannelsMenu: FC<MobileMenuProps> = (props) : JSX.Element => {
+export const ChannelsMenu: FC<ChannelsMenuProps> = (props) : JSX.Element => {
   return (
       <MobileHeaderWrapper>
         <Box sx={{ display: 'flex' }}>

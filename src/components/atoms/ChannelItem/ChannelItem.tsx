@@ -59,7 +59,7 @@ export const ChannelItemWrapper = styled(Box)<BoxProps & { selected: boolean }>(
   alignItems: 'center',
   justifyContent: 'center',
   '&:hover': {
-    backgroundColor: 'rgba(209,210,211,0.5)'
+    backgroundColor: 'rgba(209,210,211,1)'
   },
 }))
 
