@@ -2,38 +2,26 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import SliderVolumen, { SliderVolumenProps } from '../SliderVolumen';
 
-const setup = (props: SliderVolumenProps) => {
-	const component = render(<SliderVolumen {...props} />);
-	const wrapper = component.getByTestId('slider-volumen');
-	return { ...component, wrapper };
-};
-
-/* describe('MobileMenuItem', () => {
-	it('renders without crashing', () => {
-		setup({
-			icon: <svg />,
-			title: 'Item'
-		});
+describe('SliderVolumen component', () => {
+	test('renders correctly', () => {
+	  const { getByTestId } = render(<SliderVolumen defaultVolume={0} alwaysShow={true} />);
+	  const buttonShowSearch = getByTestId('button-show-slider');
+	  expect(buttonShowSearch).toBeInTheDocument();
 	});
-
-	it('calls onClick function when clicked', () => {
-		const onClick = jest.fn();
-		const { wrapper } = setup({
-			icon: <svg />,
-			title: 'Item',
-			onClick
-		});
-		fireEvent.click(wrapper);
-		expect(onClick).toHaveBeenCalled();
+  
+	test('If render search input when click show button', () => {
+		const { getByTestId } = render(<SliderVolumen defaultVolume={0} alwaysShow={false}/>);
+		const buttonShowSearch = getByTestId('button-show-slider')
+		fireEvent.click(buttonShowSearch);
+		const InputSearch = getByTestId('slider-volumen');
+		expect(InputSearch).toBeInTheDocument();
 	});
-
-	it('renders active state correctly', () => {
-		const { getByText } = setup({
-			icon: <svg />,
-			title: 'Item',
-			active: true
-		});
-		const text = getByText('Item');
-		expect(text).toHaveStyle('color: #D1D2D3');
+  
+	test('If render search input when click show button', () => {
+		const { getByTestId } = render(<SliderVolumen defaultVolume={0} alwaysShow={false}/>);
+		const buttonShowSearch = getByTestId('button-show-slider')
+		fireEvent.click(buttonShowSearch);
+		const InputSearch = getByTestId('slider-volumen');
+		expect(InputSearch).toHaveBeenCalled();
 	});
-}); */
+});

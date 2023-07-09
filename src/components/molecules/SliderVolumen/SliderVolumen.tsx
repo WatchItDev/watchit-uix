@@ -1,9 +1,7 @@
 import React, { useState, FC } from "react";
-import { styled, Box, BoxProps, Slider   } from "@mui/material";
+import { styled, Box, BoxProps, Slider } from "@mui/material";
 import Button from "../../atoms/Button";
 import { VolumeUp } from "@mui/icons-material";
-import TextField from "@mui/material/TextField";
-
 
 export type SliderVolumenProps = {
   defaultVolume: number,
@@ -12,46 +10,64 @@ export type SliderVolumenProps = {
 }
 
 export const SliderVolumen: FC<SliderVolumenProps> = (props) : JSX.Element => {
-  const { defaultVolume, alwaysShow = false, onChange } = props
-  const [ hidden, setHidden ] = useState( alwaysShow )
+  const { defaultVolume, alwaysShow = true, onChange } = props
+  // State use to show TextField and change button icon 
+  const [ show, setShow ] = useState( alwaysShow )
+
+  const handleShow = () => show ? setShow(false) : setShow(true)
 
   return (
-    <>
-      <Box sx={{ display: 'flex',flexDirection:'column',width:'2rem',justifyContent:'center',alignItems:'center' }}>  
-        { hidden == false && 
-          <Box sx={{ display: 'flex',height:'10rem',justifyContent:'center',alignItems:'center', marginBottom:'0.6rem', }}>          
-                <Slider
-                  aria-label="Temperature"
-                  orientation="vertical"
-                  defaultValue={ defaultVolume || 0 }
-                  sx={{
-                    '& .MuiSlider-thumb': {
-                      color: "white"
-                    } ,
-                    '& .MuiSlider-track': {
-                        color: "white"
-                    },
-                    '& .MuiSlider-rail': {
-                      color: "#acc4e4"
-                    },
-                    '& .MuiSlider-active': {
-                        color: "green"
-                    }
-                  }}
-              />
-          </Box>
-        }
-        <Button 
-          variant={'flat'} 
-          icon={ <VolumeUp /> } 
-          onClick={ ()=> hidden == true 
-              ? setHidden(false) 
-              : setHidden(true)
-            } 
-          backgroundColor={'transparent'} />
-      </Box>
-    </>
+    <MainWrapper>  
+      { show && 
+        <SliderVolumenWrapper>          
+          <SliderCustom
+            aria-label="Volumen"
+            orientation="vertical"
+            defaultValue={ defaultVolume || 0 }
+            data-testid={'slider-volumen'}
+          />
+        </SliderVolumenWrapper>
+      }
+      <Button 
+        variant={'flat'} 
+        icon={ <VolumeUp /> } 
+        onClick={ ()=> handleShow() } 
+        backgroundColor={'transparent'} 
+        data-testid={'button-show-slider'}
+      />
+    </MainWrapper>
   )
 }
+
+const MainWrapper = styled(Box)<BoxProps>(() => ({
+  display: 'flex',
+  flexDirection:'column',
+  width:'2rem',
+  justifyContent:'center',
+  alignItems:'center'
+}))
+
+const SliderVolumenWrapper = styled(Box)<BoxProps>(() => ({
+  display: 'flex',
+  height:'10rem',
+  justifyContent:'center',
+  alignItems:'center',
+   marginBottom:'0.6rem'
+}))
+
+const SliderCustom = styled(Slider)(() => ({
+  '& .MuiSlider-thumb': {
+    color: "white"
+  } ,
+  '& .MuiSlider-track': {
+      color: "white"
+  },
+  '& .MuiSlider-rail': {
+    color: "#acc4e4"
+  },
+  '& .MuiSlider-active': {
+      color: "white"
+  }
+}))
 
 export default SliderVolumen
