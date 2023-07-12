@@ -1,11 +1,11 @@
 {
-  "name": "@josegonz98/watchit_uix",
+  "name": "@ZorrillosDev/watchit_uix",
   "repository": {
     "type": "git",
-    "url": "git://github.com/josegonz98/watchit.git"
+    "url": "git@github.com:ZorrillosDev/watchit-uix.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/watchit"
+    "registry": "https://npm.pkg.github.com/watchit-uix"
   },
   "version": "0.0.1",
   "description": "Watchit UIX",
