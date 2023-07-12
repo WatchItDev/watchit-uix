@@ -1,5 +1,12 @@
 {
-  "name": "watchit_uix",
+  "name": "@josegonz98/watchit_uix",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/josegonz98/watchit.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/watchit"
+  },
   "version": "0.0.1",
   "description": "Watchit UIX",
   "scripts": {
@@ -47,9 +54,6 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/watchit"
-  },
   "engines": {
     "node": ">=16.14.0 <17"
   },

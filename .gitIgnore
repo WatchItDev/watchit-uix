@@ -21,6 +21,7 @@ generated-cra-app
 .cra-template-rb
 template
 .idea
+.npmrc
 jscpd/*
 coverage/
 coverage/*
