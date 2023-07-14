@@ -25,3 +25,4 @@ jscpd/*
 coverage/
 coverage/*
 dist/
+src/stories
