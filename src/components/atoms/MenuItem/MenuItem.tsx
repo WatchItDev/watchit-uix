@@ -40,7 +40,7 @@ export const MenuItemWrapper = styled(Box)<BoxProps>(() => ({
   cursor: 'pointer',
   width: '100%',
   position: 'relative',
-  padding: '1rem'
+  padding: '0 1rem'
 }))
 
 export const MenuContentWrapper = styled(Box)<BoxProps>(() => ({
