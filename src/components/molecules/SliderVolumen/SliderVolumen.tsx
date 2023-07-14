@@ -1,12 +1,13 @@
-import React, { useState, FC } from "react";
+import React, { useState, FC, ChangeEvent } from "react";
 import { styled, Box, BoxProps, Slider } from "@mui/material";
 import Button from "../../atoms/Button";
 import { VolumeUp } from "@mui/icons-material";
 
+
 export type SliderVolumenProps = {
   defaultVolume: number,
   alwaysShow: boolean, 
-  onChange?: (value:number) => void
+  onChange?: ( e:Event, value:number ) => void;
 }
 
 export const SliderVolumen: FC<SliderVolumenProps> = (props) : JSX.Element => {
@@ -25,6 +26,7 @@ export const SliderVolumen: FC<SliderVolumenProps> = (props) : JSX.Element => {
             orientation="vertical"
             defaultValue={ defaultVolume || 0 }
             data-testid={'slider-volumen'}
+            onChange={ onChange }
           />
         </SliderVolumenWrapper>
       }
