@@ -15,8 +15,8 @@ export type PosterProps = {
   onClick?: React.MouseEventHandler<HTMLDivElement>
   onPlayClick?: React.MouseEventHandler<HTMLButtonElement>
   size?: {
-    width: number,
-    height: number
+    width?: string,
+    height?: string
   }
 }
 
