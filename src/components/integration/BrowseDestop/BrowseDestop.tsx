@@ -4,7 +4,7 @@ import Button from "../../atoms/Button";
 import Menu from "../../molecules/Menu";
 import  MobileHeader from '../../molecules/MobileHeader'
 import ControllerSlider from '../../molecules/ControllerSlider'
-import { IconMenu } from "@tabler/icons";
+import { IconMenu, IconBellRinging2 } from "@tabler/icons";
 import ChannelsMenu  from "../../molecules/ChannelsMenu";
 
 export type BrowseDestopProps = {
@@ -117,7 +117,15 @@ export const BrowseDestop: FC<BrowseDestopProps> = (props) : JSX.Element => {
           title=""
           isActive={isOpen}
         />
+        <Box display={'flex'} justifyContent={'end'} alignItems={'center'} style={{ width:'100%',padding:'0 2rem' }}>
+          <IconBellRinging2 style={{ color: 'white',transform: 'rotate(-45deg)',marginRight:'8px' }}/>
+          <Box>
+            <UserTitles fontSize={'14px'} fontWeight={'bold'}>Jacob Peralta</UserTitles>
+            <UserTitles fontSize={'10px'} fontWeight={'regular'}>Platinum</UserTitles>
+          </Box>
+        </Box>
       </MobileHeaderWrapper>
+
       <ControlSliderWrapper open={isOpen}>
         <ControllerSlider movies={movies} title="Continue watching"/>
         <ControllerSlider movies={movies} title="Top rated"/>
@@ -137,6 +145,17 @@ export const MobileHeaderWrapper = styled(Box)<BoxProps & {active?:boolean}>((pr
   left:0,
   zIndex:'10',
   backgroundColor: props.active ? '#212328' : '#1A1C20',
+}))
+
+export const UserTitles = styled(Typography)<{ 
+    fontSize?: string, 
+    fontWeight?: string,
+    margin?:string  
+  }>((props) => ({
+    fontSize: props.fontSize,
+    fontWeight: props.fontWeight,
+    color: '#D1D2D3',
+    margin: props.margin
 }))
 
 export const ControlSliderWrapper = styled(Box)<BoxProps & {open?:boolean}>((props) => ({

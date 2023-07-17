@@ -4,6 +4,7 @@ import { MenuItem, MenuItemProps } from "../../atoms/MenuItem";
 import Logo from "../../atoms/Logo";
 import Button from "../../atoms/Button";
 import {IconMenu} from "@tabler/icons";
+import ChallengesPopUp from "../ChallengesPopUp/ChallengesPopUp";
 
 export type MenuProps = {
   isOpen: boolean
@@ -32,6 +33,9 @@ export const Menu: FC<MenuProps> = (props) : JSX.Element => {
                 )
               })
             }
+            <ChallengesPopUpWrapper>
+              <ChallengesPopUp/>
+            </ChallengesPopUpWrapper>
           </ItemsWrapper>
         } 
     </MenuWrapper>
@@ -52,7 +56,6 @@ export const MenuWrapper = styled(Box)<BoxProps>(() => ({
 
 export const MenuHeader = styled(Box)<BoxProps>(() => ({
   display: 'flex',
-  flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
   height: '65px',
@@ -60,7 +63,11 @@ export const MenuHeader = styled(Box)<BoxProps>(() => ({
 }))
 
 export const ItemsWrapper = styled(Box)<BoxProps & { open:boolean}>((props) => ({
-  display: props.open ? 'block' : 'none',
+  //display: props.open ? 'block' : 'none',
+  display: 'flex',
+  flexDirection:'column',
+  alignItems: 'center',
+  justifyContent: 'center',
   zIndex: '99',
   height: props.open ? 'calc(100vh - 65px)' : '0px',
   marginLeft: '2rem',
@@ -74,6 +81,15 @@ export const ItemsWrapper = styled(Box)<BoxProps & { open:boolean}>((props) => (
   //MozTransition: 'all 1s ease-in-out',
   //OTransition: 'all 1s ease-in-out',
   //transition: 'all 1s ease-in-out',
+}))
+
+export const ChallengesPopUpWrapper = styled(Box)(() => ({
+  height:'100%',
+  display:'flex',
+  alignItems:'end',
+  justifyContent:'center',
+  margin:' 0 2rem 3rem 0',
+  width: '231px'
 }))
 
 export default Menu
