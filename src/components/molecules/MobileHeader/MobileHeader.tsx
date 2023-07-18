@@ -3,14 +3,14 @@ import { styled, Box, BoxProps, Typography } from "@mui/material";
 import Button from "../../atoms/Button";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 
-export type MobileMenuProps = {
+export type MobileHeaderProps = {
   title: string,
   onBack?: () => void
   onForward?: () => void
   isActive?: boolean
 }
 
-export const MobileHeader: FC<MobileMenuProps> = (props) : JSX.Element => {
+export const MobileHeader: FC<MobileHeaderProps> = (props) : JSX.Element => {
   return (
       <MobileHeaderWrapper active={props.isActive}>
         <Box sx={{ display: 'flex' }}>
