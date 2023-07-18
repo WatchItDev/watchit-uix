@@ -6,7 +6,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import TextField from "@mui/material/TextField";
 
 export type MobileHeaderSearchProps = {
-  value: string,
+  value?: string,
+  isOpen: boolean,
   onSearchOpen?: () => void
   onClick?: () => void
   onSearchClose?: () => void
@@ -14,18 +15,13 @@ export type MobileHeaderSearchProps = {
 
 export const MobileHeaderSearch: FC<MobileHeaderSearchProps> = (props) : JSX.Element => {
   // State use to show TextField and change button icon 
-  const [ showInput, setShowInput ] = useState(false)
-
-  const handleShow = () => showInput ? setShowInput(false) : setShowInput(true)
   
   return (
     <Box sx={{ display: 'flex' }}>
-      { showInput && 
+      { props.isOpen && 
         <TextFieldCustom 
           placeholder='Search'
-          sx={{
-            
-          }}
+          sx={{  width:'300px' }}
           InputProps={{
             disableUnderline: true,
             startAdornment: (
@@ -39,8 +35,8 @@ export const MobileHeaderSearch: FC<MobileHeaderSearchProps> = (props) : JSX.Ele
       }
       <Button 
         variant={ 'flat' } 
-        icon={showInput ? <Close /> : <Search /> } 
-        onClick={ ()=>handleShow() }
+        icon={ props.isOpen ? <Close /> : <Search /> } 
+        onClick={ props.onSearchOpen }
         backgroundColor={ 'transparent' } 
         data-testid={'button-search'}
       />
@@ -52,7 +48,7 @@ const TextFieldCustom = styled(TextField)(() => ({
   border:'0',
   '.css-zypm09-MuiInputBase-input-MuiOutlinedInput-input':{
     backgroundColor:'transparent',
-    color:'#D1D2D3',
+    color:'#797A7D',
     padding: '10px 14px'
   },
   '.css-1lc5s07-MuiInputBase-root-MuiOutlinedInput-root':{

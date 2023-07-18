@@ -43,7 +43,7 @@ export const ChannelsMenu: FC<ChannelsMenuProps> = (props) : JSX.Element => {
               onClick={() => console.log('clicked channel item')}
             />
 
-            <Button variant={'flat'} icon={<Add />} backgroundColor={'transparent'} />
+            <Button width="50px" variant={'flat'} icon={<Add />} backgroundColor={'transparent'} />
           </>
         }
       </ChannelItemWrapper>

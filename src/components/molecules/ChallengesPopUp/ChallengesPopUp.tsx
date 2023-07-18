@@ -14,7 +14,7 @@ export const ChallengesPopUp: FC<ChallengesPopUpProps> = (props) : JSX.Element =
   return (
     <ChallengesPopUpWrapper open={props.isOpen}>
       <OutSideIconWrapper>
-        <VerifiedUser style={{ color: 'white' }}/>
+        <VerifiedUser style={{ color: '#D1D2D3' }}/>
       </OutSideIconWrapper>
       <ChallengesPopUpTitle fontSize={'14px'} fontWeight={'bold'} margin={'1.5rem 0 0.5rem 0'}>
         Popcorn Addict

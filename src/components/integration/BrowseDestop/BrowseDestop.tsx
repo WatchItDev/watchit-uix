@@ -114,11 +114,11 @@ export const BrowseDestop: FC<BrowseDestopProps> = (props) : JSX.Element => {
           items={items}
         />
         <MobileHeader 
-          title=""
+          title="Broswe"
           isActive={isOpen}
         />
         <Box display={'flex'} justifyContent={'end'} alignItems={'center'} style={{ width:'100%',padding:'0 2rem' }}>
-          <IconBellRinging2 style={{ color: 'white',transform: 'rotate(-45deg)',marginRight:'8px' }}/>
+          <IconBellRinging2 style={{ color: '#D1D2D3',transform: 'rotate(-45deg)',marginRight:'8px' }}/>
           <AvatarWrapper>
           <Avatar>
               J

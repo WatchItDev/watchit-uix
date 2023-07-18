@@ -3,7 +3,7 @@ import { styled, Box, BoxProps } from "@mui/material";
 import { MenuItem, MenuItemProps } from "../../atoms/MenuItem";
 import Logo from "../../atoms/Logo";
 import Button from "../../atoms/Button";
-import {IconMenu} from "@tabler/icons";
+import { IconMenu2 } from "@tabler/icons";
 import ChallengesPopUp from "../ChallengesPopUp/ChallengesPopUp";
 
 export type MenuProps = {
@@ -19,7 +19,7 @@ export const Menu: FC<MenuProps> = (props) : JSX.Element => {
     <MenuWrapper sx={{ backgroundColor: props.isOpen ? '#212328' : '#1A1C20' }}>
       <MenuHeader>
         <Logo size={100} />
-        <Button icon={<IconMenu />} variant={'flat'} backgroundColor={'transparent'} onClick={props.onIsOpenChange} />
+        <Button icon={<IconMenu2 />} variant={'flat'} backgroundColor={'transparent'} onClick={props.onIsOpenChange} />
       </MenuHeader>
         { props.isOpen && 
           <ItemsWrapper open={props.isOpen}>
