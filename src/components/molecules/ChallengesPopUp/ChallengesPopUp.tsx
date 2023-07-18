@@ -19,12 +19,12 @@ export const ChallengesPopUp: FC<ChallengesPopUpProps> = (props) : JSX.Element =
       <ChallengesPopUpTitle fontSize={'14px'} fontWeight={'bold'} margin={'1.5rem 0 0.5rem 0'}>
         Popcorn Addict
       </ChallengesPopUpTitle>
-      <ChallengesPopUpTitle fontSize={'10px'} fontWeight={'regular'} margin={'0 0 2rem 0'}>
+      <ChallengesPopUpTitle fontSize={'10px'} fontWeight={'regular'} margin={'0 0 1.5rem 0'}>
         4/6h viewing time
       </ChallengesPopUpTitle>
       <Button 
         variant={'flat'}
-        children={<span>View challenges</span>}
+        children={<span style={{fontSize:'14px'}}>View challenges</span>}
         onClick={() => console.log('clicked icon button')}
       />
     </ChallengesPopUpWrapper>
@@ -54,7 +54,7 @@ export const OutSideIconWrapper = styled(Box)<BoxProps>(() => ({
   background: "#6689A1",
   position: 'absolute',
   top: '-25px',
-  left: 'calc(50%  - 1rem)',
+  left: 'calc(50%  - 20px)',
   width: "48px",
   height: "48px",
   borderRadius:'8px',

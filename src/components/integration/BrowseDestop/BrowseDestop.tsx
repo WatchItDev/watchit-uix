@@ -119,6 +119,11 @@ export const BrowseDestop: FC<BrowseDestopProps> = (props) : JSX.Element => {
         />
         <Box display={'flex'} justifyContent={'end'} alignItems={'center'} style={{ width:'100%',padding:'0 2rem' }}>
           <IconBellRinging2 style={{ color: 'white',transform: 'rotate(-45deg)',marginRight:'8px' }}/>
+          <AvatarWrapper>
+          <Avatar>
+              J
+          </Avatar>
+          </AvatarWrapper>
           <Box>
             <UserTitles fontSize={'14px'} fontWeight={'bold'}>Jacob Peralta</UserTitles>
             <UserTitles fontSize={'10px'} fontWeight={'regular'}>Platinum</UserTitles>
@@ -168,6 +173,35 @@ export const ControlSliderWrapper = styled(Box)<BoxProps & {open?:boolean}>((pro
   //MozTransition:'width 1s ease-in-out',
   //OTransition:'width 1s ease-in-out'
 }))
+
+export const Avatar = styled(Box)((props) => ({
+  width: '30px',
+  height: '30px',
+  backgroundColor: 'orange',
+  borderRadius: '50%',
+  color:'white',
+  fontWeight: 'bold',
+  fontSize: '14px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderImage: 'conic-gradient(from 0deg, red, yellow, lime, aqua, blue, magenta, red) 1'
+}))
+
+export const AvatarWrapper = styled(Box)((props) => ({
+  width: '34px',
+  height: '34px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: 'double 8px transparent',
+  borderRadius: '80px',
+  backgroundImage: 'radial-gradient(circle at top left, #f00,#3020ff)',
+  backgroundOrigin: 'border-box',
+  backgroundClip: 'padding-box, border-box',
+  margin:'0 0.1rem 0 0.5rem',
+}))
+
 
 
 export default BrowseDestop

@@ -51,7 +51,7 @@ export const MenuWrapper = styled(Box)<BoxProps>(() => ({
   maxWidth: '231px',
   padding: '0 2rem',
   position: 'relative',
-  borderRight: '2px solid rgb(241, 238, 239, 0.4)'
+  borderRight: '1px solid rgb(241, 238, 239, 0.2)'
 }))
 
 export const MenuHeader = styled(Box)<BoxProps>(() => ({
@@ -60,6 +60,7 @@ export const MenuHeader = styled(Box)<BoxProps>(() => ({
   justifyContent: 'space-between',
   height: '65px',
   width: '100%',
+  gap:'80px'
 }))
 
 export const ItemsWrapper = styled(Box)<BoxProps & { open:boolean}>((props) => ({
@@ -76,7 +77,7 @@ export const ItemsWrapper = styled(Box)<BoxProps & { open:boolean}>((props) => (
   left: '0',
   background: "#212328",
   width: "calc(100% - 2rem)",
-  borderRight: '2px solid rgb(241, 238, 239, 0.4)',
+  borderRight: '1px solid rgb(241, 238, 239, 0.2)',
   //WebkitTransition: 'all 1s ease-in-out',
   //MozTransition: 'all 1s ease-in-out',
   //OTransition: 'all 1s ease-in-out',
@@ -88,7 +89,7 @@ export const ChallengesPopUpWrapper = styled(Box)(() => ({
   display:'flex',
   alignItems:'end',
   justifyContent:'center',
-  margin:' 0 2rem 3rem 0',
+  margin:' 0 2rem 2rem 0',
   width: '231px'
 }))
 
