@@ -13,11 +13,11 @@ export const ChannelManageDesktop: FC = (props) : JSX.Element => {
       <Box sx={{ display: 'flex',marginTop:'2rem' }}>
         <Logo size={500}/>
       </Box>
-      <Box sx={{ display: 'flex',alignItems:'center',width:'40%',minWidth:'300px' }}>
+      <Box sx={{ display: 'flex',alignItems:'center',minWidth:'300px' }}>
         <Grid container justifyContent={'center'} spacing={2}>
           { users.map( (user, index) => {
             return(
-              <Grid item xs={6} md={3}>
+              <Grid item xs={6} sm={3} md={3}>
                 <ChannelItem 
                   innerLetter={user} 
                   label={user} 
@@ -29,7 +29,7 @@ export const ChannelManageDesktop: FC = (props) : JSX.Element => {
               </Grid>
             )
           })}
-          <Grid item xs={6} md={3}>
+          <Grid item xs={6} sm={3} md={3}>
             <AddUserWrapper>
               <Button 
                 margin="5px" 
