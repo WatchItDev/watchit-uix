@@ -14,6 +14,7 @@ export type ChannelItemProps = {
   label?: string
   size?: number
   borderWidth?: number
+  labelLetterSize?: string
   onClick?: () => void
 }
 
@@ -45,7 +46,7 @@ export const ChannelItem: FC<ChannelItemProps> = (props) : JSX.Element => {
       </ChannelItemWrapper>
       {
         props.label ? (
-          <ChannelItemText variant={'body1'}>{props.label}</ChannelItemText>
+          <ChannelItemText fontSize={props.labelLetterSize} variant={'body1'}>{props.label}</ChannelItemText>
         ) : <></>
       }
     </Box>
@@ -74,8 +75,8 @@ export const ChannelItemContent = styled(Box)<BoxProps>(() => ({
   fontWeight: 500
 }))
 
-export const ChannelItemText = styled(Typography)<TypographyProps>(() => ({
-  fontSize: '1rem',
+export const ChannelItemText = styled(Typography)<TypographyProps & { fontSize?:string }>((props) => ({
+  fontSize: props.fontSize,
   fontWeight: 500,
   color: '#D1D2D3',
   textTransform: 'uppercase',

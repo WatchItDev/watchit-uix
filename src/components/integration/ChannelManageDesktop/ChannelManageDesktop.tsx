@@ -4,6 +4,7 @@ import { Add } from "@mui/icons-material";
 import Logo from "../../atoms/Logo";
 import ChannelItem from "../../atoms/ChannelItem";
 import Button from "../../atoms/Button";
+import { globalOverrides } from "@src/styles/theme";
 
 export const ChannelManageDesktop: FC = (props) : JSX.Element => {
   const users = [ 'Austin', 'Brooklyn','Chicago']
@@ -11,26 +12,27 @@ export const ChannelManageDesktop: FC = (props) : JSX.Element => {
   return (
     <ChannelManageDektopWrapper>
       <Box sx={{ display: 'flex',marginTop:'2rem' }}>
-        <Logo size={500}/>
+        <Logo size={150}/>
       </Box>
       <Box sx={{ display: 'flex',alignItems:'center',minWidth:'300px' }}>
         <Grid container justifyContent={'center'} spacing={2}>
           { users.map( (user, index) => {
             return(
-              <Grid item xs={6} sm={3} md={3}>
+              <CustomGrid index={index} item xs={6} sm={3} md={3}>
                 <ChannelItem 
                   innerLetter={user} 
                   label={user} 
                   size={100} 
-                  innerLetterSize={20} 
-                  selected={true} 
+                  labelLetterSize={'0.8rem'}
+                  innerLetterSize={35} 
+                  selected={index == 0 ? true : false} 
                   borderWidth={3}
                 />
-              </Grid>
+              </CustomGrid>
             )
           })}
-          <Grid item xs={6} sm={3} md={3}>
-            <AddUserWrapper>
+          <CustomGrid alignItems={'start'} index={(users.length)} item xs={6} sm={3} md={3}>
+            <AddChannelWrapper>
               <Button 
                 margin="5px" 
                 height="100px" 
@@ -40,8 +42,8 @@ export const ChannelManageDesktop: FC = (props) : JSX.Element => {
                 variant={'secondary'} 
                 backgroundColor={'transparent'} 
               />
-            </AddUserWrapper>
-          </Grid>
+            </AddChannelWrapper>
+          </CustomGrid>
         </Grid>
       </Box>
       <Box sx={{ display: 'flex' }}>
@@ -60,12 +62,22 @@ export const ChannelManageDektopWrapper = styled(Box)<BoxProps>(() => ({
   height:'calc(100vh - 3rem)',
 }))
 
-export const AddUserWrapper = styled(Box)<BoxProps>(() => ({
+export const AddChannelWrapper = styled(Box)<BoxProps>(() => ({
   display:'flex',
   flexDirection:'column',
   alignItems:'center',
   justifyContent:'center',
-  cursor:'pointer' 
+  cursor:'pointer',
 }))
+
+type CustomGridProps = { index: number; };
+const CustomGrid = styled(Grid)<CustomGridProps>(({index, theme},) => ({
+  [theme.breakpoints.only('xs')]: {
+    display:'flex',
+    justifyContent:`${ (index%2) > 0 ? 'start' : 'end'}`
+  }
+}));
+
+
 
 export default ChannelManageDesktop
