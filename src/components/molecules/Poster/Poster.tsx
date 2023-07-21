@@ -38,7 +38,7 @@ export const Poster: FC<PosterProps> = (props) : JSX.Element => {
           <PosterTitle variant={'h4'} sx={{ marginBottom: '0' }}>
             { props.year }
           </PosterTitle>
-          <Button variant={'primary'} icon={<PlayArrow />} onClick={props.onPlayClick} data-testid={'play-button'} />
+          <Button width="50px" variant={'primary'} icon={<PlayArrow />} onClick={props.onPlayClick} data-testid={'play-button'} />
         </Box>
         <PosterTitle variant={'h4'} className={'hover-show'}>
           { props.title }

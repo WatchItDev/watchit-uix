@@ -1,24 +1,31 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { styled, Box, BoxProps, Typography } from "@mui/material";
 import Button from "../../atoms/Button";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
+import MobileHeaderSearch from "../MobileHeaderSearch/MobileHeaderSearch";
 
-export type MobileMenuProps = {
+export type MobileHeaderProps = {
   title: string,
   onBack?: () => void
   onForward?: () => void
   isActive?: boolean
 }
 
-export const MobileHeader: FC<MobileMenuProps> = (props) : JSX.Element => {
+export const MobileHeader: FC<MobileHeaderProps> = (props) : JSX.Element => {
+  const [ showInput, setShowInput ] = useState(false)
+
+  const handleShow = () => showInput ? setShowInput(false) : setShowInput(true)
+
   return (
       <MobileHeaderWrapper active={props.isActive}>
         <Box sx={{ display: 'flex' }}>
           <Button variant={'flat'} icon={<ChevronLeft />} onClick={props.onBack} backgroundColor={'transparent'} />
           <Button variant={'flat'} icon={<ChevronRight />} onClick={props.onForward} backgroundColor={'transparent'} />
         </Box>
-        <Typography variant={'h4'} sx={{ color: '#D1D2D3' }}>{props.title}</Typography>
-        <Button variant={'flat'} icon={<Search />} onClick={props.onForward} backgroundColor={'transparent'} />
+        <Box sx={{ display: 'flex',alignItems:'center',width:'100%' }}>
+          { !showInput && <Typography style={{padding:'2rem'}} variant={'h4'} sx={{ color: '#D1D2D3' }}>{props.title}</Typography> }
+          <MobileHeaderSearch isOpen={showInput} onSearchOpen={ ()=>handleShow() }/>
+        </Box>
       </MobileHeaderWrapper>
   )
 }
