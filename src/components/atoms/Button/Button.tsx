@@ -1,5 +1,6 @@
 import React, {FC, PropsWithChildren} from "react";
 import {ButtonProps as MuiButtonProps, Button as MuiButton, Box} from "@mui/material";
+import { withTheme } from "../../../hoc/withTheme";
 
 type ButtonVariant = 'primary' | 'secondary' | 'flat'
 
@@ -57,4 +58,4 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) : JSX.Element 
   )
 }
 
-export default Button
+export default withTheme<ButtonProps>(Button)
