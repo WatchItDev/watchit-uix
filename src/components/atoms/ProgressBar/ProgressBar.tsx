@@ -1,4 +1,4 @@
-import React, { useState, useRef, FC } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { styled, Box } from "@mui/material";
 
 type ChannelItemProps = {
@@ -6,9 +6,10 @@ type ChannelItemProps = {
   backgroundColor?: string;
   barColor?: string;
   showBullet?: boolean;
+  onNewPercentage:(increaseValue:number) => void;
 };
 
-const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barColor, showBullet }) => {
+const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barColor, showBullet,onNewPercentage }) => {
   const progressBarRef = useRef<HTMLDivElement>(null);
   const progressBarBallRef = useRef<HTMLDivElement>(null);
   const [percentageState, setPercentage] = useState<number>(percentage);
@@ -23,6 +24,7 @@ const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barCol
       let newPercentage = ((currentX - left) / progressWidth) * 100;
 
       if ((newPercentage >= 0) && (newPercentage <= 100)) setPercentage(newPercentage);
+      onNewPercentage(newPercentage)
     };
     const stopProgress = () => {
       document.removeEventListener('mousemove', moveProgress);
@@ -31,7 +33,13 @@ const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barCol
     progressBarRef.current!.addEventListener('click', moveProgress);
     document.addEventListener('mousemove', moveProgress);
     document.addEventListener('mouseup', stopProgress);
+
+    
   };
+
+  useEffect(()=>{
+    setPercentage(percentage)
+  },[percentage])
 
   return (
     <ProgressBarWrapper ref={progressBarRef} data-testid={'progress-bar'} onMouseDown={handleMouseDown}>

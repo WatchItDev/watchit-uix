@@ -55,7 +55,7 @@ export const ChannelItem: FC<ChannelItemProps> = (props) : JSX.Element => {
 
 export const ChannelItemWrapper = styled(Box)<BoxProps & { selected: boolean }>((props) => ({
   backgroundColor: props.selected ? 'rgba(209,210,211,1)' : 'transparent',
-  borderRadius: '19px',
+  borderRadius: '13px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -66,7 +66,7 @@ export const ChannelItemWrapper = styled(Box)<BoxProps & { selected: boolean }>(
 
 export const ChannelItemContent = styled(Box)<BoxProps>(() => ({
   backgroundColor: '#D1D2D3',
-  borderRadius: '15px',
+  borderRadius: '10px',
   border: '5px solid #1A1C20',
   display: 'flex',
   alignItems: 'center',

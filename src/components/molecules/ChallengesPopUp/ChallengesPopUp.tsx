@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import { styled, Box, BoxProps, Typography } from "@mui/material";
 import Button from "../../atoms/Button";
-import { Add,VerifiedUser } from "@mui/icons-material";
-import ChannelItem  from "../../atoms/ChannelItem";
+import { VerifiedUser } from '@mui/icons-material'
 
 export type ChallengesPopUpProps = {
   item?: string,
@@ -47,7 +46,7 @@ export const ChallengesPopUpWrapper = styled(Box)<BoxProps & { open?:boolean }>(
   padding:'1rem',
   position:'relative',
   borderRadius:'8px',
-  width:'100%'
+  width:'calc(100% - 2rem)'
 }))
 
 export const OutSideIconWrapper = styled(Box)<BoxProps>(() => ({

@@ -63,7 +63,8 @@ const movies = [
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ControllerSlider> = (args) =>
 <Box sx={{width:'800px'}}>
-  <ControllerSlider {...args} title="Continue watching" movies={movies}/>;
+  <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/>;
+  <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/>;
 </Box>
 
 export const ChannelItemTest = Template.bind({});

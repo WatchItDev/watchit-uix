@@ -8,7 +8,7 @@ export default {
     component: SliderVolumen,
 } as ComponentMeta<typeof SliderVolumen>;
 
-const handleSliderChange = ( e:Event, value:number ) => {
+const handleSliderChange = ( value:number ) => {
   console.log(value)
 };
 
@@ -20,5 +20,5 @@ export const Slider = Template.bind({});
 Slider.args = {
   alwaysShow: true,
   defaultVolume: 10,
-  onChange: ( e:Event, value:number ) =>handleSliderChange(e,value)
+  onChange: ( value:number ) =>handleSliderChange(value)
 }

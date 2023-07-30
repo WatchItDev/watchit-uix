@@ -1,6 +1,6 @@
-import React, { FC, useState, useRef, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { styled, Box, BoxProps, Typography, Button } from "@mui/material";
-import Poster from "../Poster/Poster";
+import Poster from "../Poster";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 export type MoviesProps = {
@@ -11,6 +11,7 @@ export type MoviesProps = {
 export type ControllerSliderProps = {
   title?:string
   movies:MoviesProps[]
+  onClick:any
 }
 
 export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element => {
@@ -32,7 +33,7 @@ export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element
   }
    
   return (
-    <Box sx={{margin:'20px 0',width:'100%'}}>
+    <Box sx={{width:'100%'}}>
       <Box>
         <SliderControllerTitle>
           {props.title}
@@ -48,6 +49,7 @@ export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element
                   progress={50}
                   year={2022}
                   canHover={true} 
+                  onClick={ props.onClick }
                 />
               )
             })
@@ -55,13 +57,13 @@ export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element
         </SliderControllerBox>
         <ButtonSliderCustom right="0px" onClick={()=>handleScroll("right")}>
           <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-            <ChevronRight/>
+            <ChevronRight sx={{color:'#D1D2D3'}}/>
           </Box>
         </ButtonSliderCustom>
         {index != 0 &&
         <ButtonSliderCustom left="0px" onClick={()=>handleScroll("left")}>
           <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-            <ChevronLeft/>
+            <ChevronLeft sx={{color:'#D1D2D3'}}/>
           </Box>
         </ButtonSliderCustom>}
       </SliderControllerWrapper>

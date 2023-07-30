@@ -1,5 +1,5 @@
 import React, {FC, PropsWithChildren} from "react";
-import {ButtonProps as MuiButtonProps, styled, Button as MuiButton, Box} from "@mui/material";
+import {ButtonProps as MuiButtonProps, Button as MuiButton, Box} from "@mui/material";
 
 type ButtonVariant = 'primary' | 'secondary' | 'flat'
 

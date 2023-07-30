@@ -35,7 +35,7 @@ export const ProfileInfoWrapper = styled(Box)<BoxProps>(() => ({
   backgroundColor: '#1A1C20',
   border: '1px solid rgba(255,255,255,0.1)',
   borderRadius: '10px',
-  maxWidth: '80px',
+  width: '100%',
   minHeight: '80px'
 }))
 

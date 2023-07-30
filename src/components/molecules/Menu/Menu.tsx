@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import { styled, Box, BoxProps } from "@mui/material";
 import { MenuItem, MenuItemProps } from "../../atoms/MenuItem";
 import Logo from "../../atoms/Logo";
-import Button from "../../atoms/Button";
+import CustomButton from "../../atoms/CustomButton";
 import { IconMenu2 } from "@tabler/icons";
-import ChallengesPopUp from "../ChallengesPopUp/ChallengesPopUp";
+import ChallengesPopUp from "../ChallengesPopUp";
 
 export type MenuProps = {
   isOpen: boolean
@@ -12,14 +12,16 @@ export type MenuProps = {
   active: string
   onIsOpenChange?: () => void
   onItemChange?: (id: string) => void
+  width:string
+  maxWidth?:string
 }
 
 export const Menu: FC<MenuProps> = (props) : JSX.Element => {
   return (
-    <MenuWrapper sx={{ backgroundColor: props.isOpen ? '#212328' : '#1A1C20' }}>
+    <MenuWrapper  maxWidth={props.maxWidth} width={props.width} sx={{ backgroundColor: props.isOpen ? '#212328' : '#1A1C20' }}>
       <MenuHeader>
         <Logo size={100} />
-        <Button icon={<IconMenu2 />} variant={'flat'} backgroundColor={'transparent'} onClick={props.onIsOpenChange} />
+        <CustomButton height="40px" width="40px" icon={<IconMenu2 style={{ color: '#D1D2D3'}} />} variant={'flat'} backgroundColor={'transparent'} onClick={props.onIsOpenChange} />
       </MenuHeader>
         { props.isOpen && 
           <ItemsWrapper open={props.isOpen}>
@@ -42,55 +44,57 @@ export const Menu: FC<MenuProps> = (props) : JSX.Element => {
   )
 }
 
-export const MenuWrapper = styled(Box)<BoxProps>(() => ({
-  display: 'flex',
-  flexDirection: 'column',
+export const MenuWrapper = styled(Box)<BoxProps>((props) => ({
+  display: 'flex !important',
   alignItems: 'center',
-  justifyContent: 'space-around',
-  width: '231px',
-  maxWidth: '231px',
-  padding: '0 2rem',
+  width: `${props.width} !important`,
+  maxWidth: `${props?.maxWidth ? props?.maxWidth : props.width} !important`,
   position: 'relative',
-  borderRight: '1px solid rgb(241, 238, 239, 0.2)'
+  height: '65px !important',
 }))
 
 export const MenuHeader = styled(Box)<BoxProps>(() => ({
-  display: 'flex',
+  display: 'flex !important',
   alignItems: 'center',
   justifyContent: 'space-between',
-  height: '65px',
-  width: '100%',
-  gap:'80px'
+  height: "100% !important",
+  width: "100% !important",
+  borderRight: '1px solid rgb(241, 238, 239, 0.2) !important',
+  paddingLeft: '2rem !important',
+  position: 'absolute',
+  top: '0px !important',
+  left: '0 !important',
 }))
 
 export const ItemsWrapper = styled(Box)<BoxProps & { open:boolean}>((props) => ({
   //display: props.open ? 'block' : 'none',
-  display: 'flex',
+  display: 'flex !important',
   flexDirection:'column',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: '99',
+  zIndex: '99 !important',
   height: props.open ? 'calc(100vh - 65px)' : '0px',
-  marginLeft: '2rem',
   position: 'absolute',
-  top: '65px',
-  left: '0',
-  background: "#212328",
-  width: "calc(100% - 2rem)",
-  borderRight: '1px solid rgb(241, 238, 239, 0.2)',
+  top: '65px !important',
+  left: '0 !important',
+  background: "#212328 !important",
+  width: "100% !important",
+  borderRight: '1px solid rgb(241, 238, 239, 0.2) !important',
+  paddingLeft: '2rem !important'
   //WebkitTransition: 'all 1s ease-in-out',
   //MozTransition: 'all 1s ease-in-out',
   //OTransition: 'all 1s ease-in-out',
   //transition: 'all 1s ease-in-out',
+  
 }))
 
 export const ChallengesPopUpWrapper = styled(Box)(() => ({
-  height:'100%',
-  display:'flex',
+  height:'100% !important',
+  display:'flex !important',
   alignItems:'end',
   justifyContent:'center',
-  margin:' 0 2rem 2rem 0',
-  width: '231px'
+  margin:' 0 2rem 2rem 0 !important',
+  width: '231px !important',
 }))
 
 export default Menu

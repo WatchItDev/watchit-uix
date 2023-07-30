@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Menu> = (args) => {
   const handleToggleOpen = () => {
     setIsOpen((open) => !open)
   }
-  return <Menu {...args} onItemChange={setActive} active={active} isOpen={isOpen} onIsOpenChange={handleToggleOpen} />
+  return <Menu {...args} width={'300px'} onItemChange={setActive} active={active} isOpen={isOpen} onIsOpenChange={handleToggleOpen} />
 };
 
 export const ChannelItemTest = Template.bind({});
