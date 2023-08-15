@@ -5,7 +5,7 @@ import { Box } from "@mui/material";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: "Watchit Molecules/ ControllerSlider",
+    title: "Watchit Molecules/ Controller Slider",
     component: ControllerSlider,
 } as ComponentMeta<typeof ControllerSlider>;
 
@@ -62,12 +62,12 @@ const movies = [
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ControllerSlider> = (args) =>
-<Box sx={{width:'800px'}}>
-  <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/>;
-  <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/>;
+<Box display='flex' flexDirection='column' gap='10px 0' width='100%'>
+  <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/>
+  {/* <ControllerSlider {...args} onClick={ ()=>console.log('on click test')} title="Continue watching" movies={movies}/> */}
 </Box>
 
-export const ChannelItemTest = Template.bind({});
+export const ControllerSliderTest = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-ChannelItemTest.args = {
+  ControllerSliderTest.args = {
 }

@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { styled, Box, BoxProps, Typography } from "@mui/material";
-import Button from "../../atoms/Button";
+import React, { FC } from 'react'
+import { styled, Box, BoxProps, Typography } from '@mui/material'
+import Button from '../../atoms/Button'
 import { VerifiedUser } from '@mui/icons-material'
 
 export type ChallengesPopUpProps = {
@@ -9,33 +9,32 @@ export type ChallengesPopUpProps = {
   isOpen?: boolean
 }
 
-export const ChallengesPopUp: FC<ChallengesPopUpProps> = (props) : JSX.Element => {
+export const ChallengesPopUp: FC<ChallengesPopUpProps> = ( props ) : JSX.Element => {
   return (
     <ChallengesPopUpWrapper open={props.isOpen}>
       <OutSideIconWrapper>
         <VerifiedUser style={{ color: '#D1D2D3' }}/>
       </OutSideIconWrapper>
-      <ChallengesPopUpTitle fontSize={'14px'} fontWeight={'bold'} margin={'1.5rem 0 0.5rem 0'}>
+      <Typography 
+          variant='text14bold'
+          margin='1.5rem 0 0.5rem 0'
+        >
         Popcorn Addict
-      </ChallengesPopUpTitle>
-      <ChallengesPopUpTitle fontSize={'10px'} fontWeight={'regular'} margin={'0 0 1.5rem 0'}>
+      </Typography>
+      <Typography 
+          variant="text10regular" 
+          margin='0 0 1.5rem 0'
+        >
         4/6h viewing time
-      </ChallengesPopUpTitle>
+      </Typography>
       <Button 
         variant={'flat'}
-        children={<span style={{fontSize:'14px'}}>View challenges</span>}
+        children={<span style={{ fontSize:'14px' }}>View challenges</span>}
         onClick={() => console.log('clicked icon button')}
       />
     </ChallengesPopUpWrapper>
   )
 }
-
-export const ChallengesPopUpTitle = styled(Typography)<{ fontSize?:string, fontWeight?:string,margin?:string  }>((props) => ({
-  fontSize: props.fontSize,
-  fontWeight: props.fontWeight,
-  color: '#D1D2D3',
-  margin: props.margin
-}))
 
 export const ChallengesPopUpWrapper = styled(Box)<BoxProps & { open?:boolean }>((props) => ({
   display: 'flex',
@@ -50,12 +49,12 @@ export const ChallengesPopUpWrapper = styled(Box)<BoxProps & { open?:boolean }>(
 }))
 
 export const OutSideIconWrapper = styled(Box)<BoxProps>(() => ({
-  background: "#6689A1",
+  background: '#6689A1',
   position: 'absolute',
   top: '-25px',
   left: 'calc(50%  - 20px)',
-  width: "48px",
-  height: "48px",
+  width: '48px',
+  height: '48px',
   borderRadius:'8px',
   display: 'flex',
   alignItems: 'center',

@@ -12,7 +12,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ChallengesPopUp> = (args) => 
   <Box sx={{ width:'250px', marginTop:'50px' }}>
-    <ChallengesPopUp {...args} isOpen={true}/>;
+    <ChallengesPopUp {...args} isOpen={true}/>
   </Box>
 
 export const ChannelItemTest = Template.bind({});

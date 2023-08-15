@@ -1,8 +1,9 @@
-import React, { FC } from "react";
-import { styled, Box, BoxProps, Grid } from "@mui/material";
-import { Add } from "@mui/icons-material";
-import ChannelItem  from "../../atoms/ChannelItem";
-import CustomButton from "../../atoms/CustomButton";
+import React, { FC } from 'react'
+import { styled, Box, BoxProps, Grid } from '@mui/material'
+import { Add } from '@mui/icons-material'
+import ChannelItem  from '../../atoms/ChannelItem'
+import CustomButton from '../../atoms/CustomButton'
+import { withTheme } from '../../../hoc/withTheme'
 
 export type ChannelsMenuProps = {
   item?: string,
@@ -11,22 +12,22 @@ export type ChannelsMenuProps = {
   users: any
 }
 
-export const ChannelsMenu: FC<ChannelsMenuProps> = (props) : JSX.Element => {
+export const ChannelsMenu: FC<ChannelsMenuProps> = ( props ) : JSX.Element => {
   return (
     <ChannelMenuWrapper open={props.isOpen}>
       <ChannelItemWrapper>
-      <Grid container justifyContent={'center'} spacing={1}>
+      <Grid container justifyContent='center' spacing={1}>
           { props.users.slice(0, props.isOpen ? 3 : 1).map( (user:any, index:any) => {
             return(
-              <Grid item xs={12} >
+              <Grid item xs={ 12 } >
                 <ChannelItem 
                   innerLetter={user} 
-                  size={40} 
-                  labelLetterSize={'0.5rem'}
-                  innerLetterSize={15} 
-                  selected={index == 0 ? true : false} 
-                  borderWidth={2}
-                  onClick={()=>console.log('test')}
+                  size={ 40 } 
+                  labelLetterSize='0.5rem'
+                  innerLetterSize={ 15 } 
+                  selected={ index == 0 ? true : false } 
+                  borderWidth={ 2 }
+                  onClick={ ()=>console.log('test') }
                 />
               </Grid>
             )
@@ -35,10 +36,10 @@ export const ChannelsMenu: FC<ChannelsMenuProps> = (props) : JSX.Element => {
             <Grid alignItems={'start'} item xs={12} >
               <AddChannelWrapper>
                 <CustomButton 
-                  margin="5px" 
-                  height="40px" 
-                  width="30px" 
-                  borderRadius="10px !important" 
+                  margin='5px' 
+                  height='40px' 
+                  width='30px' 
+                  borderRadius='10px !important' 
                   icon={<Add style={{ color: '#D1D2D3' }}/>} 
                   variant={'flat'} 
                   backgroundColor={'transparent'} 
@@ -83,4 +84,4 @@ export const AddChannelWrapper = styled(Box)(() => ({
   cursor:'pointer',
 }))
 
-export default ChannelsMenu
+export default withTheme<ChannelsMenuProps>(ChannelsMenu)

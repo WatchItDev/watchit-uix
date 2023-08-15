@@ -1,9 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { styled, Box, BoxProps, Typography } from "@mui/material";
-import PopUpOptions from "./PopUpOptions";
+import PopUpOptions from "./PopUp";
 import CustomButton from "../../atoms/Button";
-import ProgressBar from "../ProgressBar";
 import { Cast } from "@mui/icons-material";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

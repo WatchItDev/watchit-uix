@@ -1,6 +1,6 @@
-import React, {FC, PropsWithChildren} from "react";
-import {ButtonProps as MuiButtonProps, Button as MuiButton, Box} from "@mui/material";
-import { withTheme } from "../../../hoc/withTheme";
+import React, { FC, PropsWithChildren } from 'react'
+import { ButtonProps as MuiButtonProps, Button as MuiButton, Box } from '@mui/material'
+import { withTheme } from '../../../hoc/withTheme'
 
 type ButtonVariant = 'primary' | 'secondary' | 'flat'
 
@@ -37,12 +37,12 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) : JSX.Element 
              margin: props.margin
       }}
     >
-      <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
+      <Box display='flex' alignItems='center' justifyContent='center'>
         {
           props.icon ? (
             <Box
-              display={'flex'} alignItems={'center'} justifyContent={'center'}
-              sx={{ mr: props.children ? '0.5rem' : '0' }} data-testid={'icon'}
+              display='flex' alignItems='center' justifyContent='center'
+              sx={{ mr: props.children ? '0.5rem' : '0' }} data-testid='icon'
             >
               { props.icon }
             </Box>
@@ -58,4 +58,4 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = (props) : JSX.Element 
   )
 }
 
-export default withTheme<ButtonProps>(Button)
+export default withTheme<PropsWithChildren<ButtonProps>>(Button)

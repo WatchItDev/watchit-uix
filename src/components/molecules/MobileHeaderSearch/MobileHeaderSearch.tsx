@@ -1,9 +1,10 @@
-import React, { FC } from "react";
-import { styled, Box } from "@mui/material";
-import { Button } from "../../atoms/index";
-import { Search, Close } from "@mui/icons-material";
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from "@mui/material/TextField";
+import React, { FC } from 'react'
+import { styled, Box } from '@mui/material'
+import { Button } from '../../atoms/index'
+import { Search, Close } from '@mui/icons-material'
+import InputAdornment from '@mui/material/InputAdornment'
+import TextField from '@mui/material/TextField'
+import { withTheme } from '../../../hoc/withTheme'
 
 export type MobileHeaderSearchProps = {
   value?: string,
@@ -13,17 +14,16 @@ export type MobileHeaderSearchProps = {
   onSearchClose?: () => void
 }
 
-export const MobileHeaderSearch: FC<MobileHeaderSearchProps> = (props) : JSX.Element => {
-  // State use to show TextField and change button icon 
-  
+export const MobileHeaderSearch: FC<MobileHeaderSearchProps> = ( props ) : JSX.Element => {
   return (
     <Box sx={{ display: 'flex' }}>
       { props.isOpen && 
         <TextFieldCustom 
           placeholder='Search'
-          sx={{  width:'300px'}}
+          sx={{  width:'300px' }}
           InputProps={{
-            sx: { borderRadius:'20px !important',border:'1px solid #D1D2D3 !important',
+            sx: { 
+                borderRadius:'20px !important',border:'1px solid #D1D2D3 !important',
                 'input':{
                     padding: '9px 14px !important',
                     background:'transparent !important',
@@ -49,22 +49,22 @@ export const MobileHeaderSearch: FC<MobileHeaderSearchProps> = (props) : JSX.Ele
               </InputAdornment>
             ),
           }}
-          data-testid={'textfield-search'}
+          data-testid='textfield-search'
         /> 
       }
       <Button 
-        variant={ 'flat' } 
-        icon={ props.isOpen ? <Close style={{ color: '#D1D2D3'}} /> : <Search style={{ color: '#D1D2D3'}}/> } 
+        variant='flat'
+        icon={ props.isOpen ? <Close style={{ color: '#D1D2D3'}} /> : <Search style={{ color: '#D1D2D3' }}/> } 
         onClick={ props.onSearchOpen }
-        backgroundColor={ 'transparent' } 
-        data-testid={'button-search'}
+        backgroundColor='transparent'
+        data-testid='button-search'
       />
     </Box>
   )
 }
 
 const TextFieldCustom = styled(TextField)(() => ({
-  "& fieldset": { border: 'none' }
+  '& fieldset': { border: 'none' }
 }))
 
-export default MobileHeaderSearch
+export default withTheme<MobileHeaderSearchProps>(MobileHeaderSearch)

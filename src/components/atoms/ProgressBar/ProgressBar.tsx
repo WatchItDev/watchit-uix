@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
-import { styled, Box } from "@mui/material";
+import React, { useState, useEffect, useRef, FC } from 'react'
+import { styled, Box } from '@mui/material'
+import { withTheme } from '../../../hoc/withTheme'
 
-type ChannelItemProps = {
+type ProgressBarProps = {
   percentage: number;
   backgroundColor?: string;
   barColor?: string;
@@ -9,7 +10,7 @@ type ChannelItemProps = {
   onNewPercentage:(increaseValue:number) => void;
 };
 
-const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barColor, showBullet,onNewPercentage }) => {
+const ProgressBar: FC<ProgressBarProps> = ({ percentage, backgroundColor, barColor, showBullet,onNewPercentage }) => {
   const progressBarRef = useRef<HTMLDivElement>(null);
   const progressBarBallRef = useRef<HTMLDivElement>(null);
   const [percentageState, setPercentage] = useState<number>(percentage);
@@ -33,8 +34,6 @@ const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barCol
     progressBarRef.current!.addEventListener('click', moveProgress);
     document.addEventListener('mousemove', moveProgress);
     document.addEventListener('mouseup', stopProgress);
-
-    
   };
 
   useEffect(()=>{
@@ -42,10 +41,10 @@ const ProgressBar: FC<ChannelItemProps> = ({ percentage, backgroundColor, barCol
   },[percentage])
 
   return (
-    <ProgressBarWrapper ref={progressBarRef} data-testid={'progress-bar'} onMouseDown={handleMouseDown}>
-      <ProgressBarBackground backgroundColor={backgroundColor} data-testid={'progress-bar-background'} />
-      <ProgressBarContent barColor={barColor} percentage={percentageState} data-testid={'progress-bar-content'}>
-        {showBullet && <ProgressBarBall barColor={barColor} ref={progressBarBallRef} data-testid={'progress-bar-ball'} />}
+    <ProgressBarWrapper ref={progressBarRef} data-testid='progress-bar' onMouseDown={handleMouseDown}>
+      <ProgressBarBackground backgroundColor={backgroundColor} data-testid='progress-bar-background' />
+      <ProgressBarContent barColor={barColor} percentage={percentageState} data-testid='progress-bar-content'>
+        {showBullet && <ProgressBarBall barColor={barColor} ref={progressBarBallRef} data-testid='progress-bar-ball'/>}
       </ProgressBarContent>
     </ProgressBarWrapper>
   );
@@ -105,5 +104,4 @@ const ProgressBarBall = styled(Box, {
   backgroundColor: barColor ?? '#D71F27',
 }));
 
-export default ProgressBar;
-
+export default withTheme<ProgressBarProps>(ProgressBar)

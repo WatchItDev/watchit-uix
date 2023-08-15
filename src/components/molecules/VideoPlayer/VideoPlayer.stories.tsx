@@ -12,11 +12,11 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof VideoPlayer> = (args) => {
-  return (<Box sx={{width:'640px',height:'480px'}}>
+  return (<Box sx={{width:'100%',height:'100vh'}}>
     <VideoPlayer 
       {...args}
       titleMovie="Renfield"
-      defaultVolumen={50}
+      defaultVolume={50}
       src="http://vjs.zencdn.net/v/oceans.mp4"
       preview={false}
       autoPlay={false}

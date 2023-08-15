@@ -13,7 +13,7 @@ export default {
 const Template: ComponentStory<typeof ChannelsMenu> = (args) => {
   const users = [ 'Austin', 'Brooklyn','Chicago'] 
   return <Box sx={{ width:'80px' }}>
-    <ChannelsMenu {...args} isOpen={false} users={users}/>;
+    <ChannelsMenu {...args} isOpen={false} users={users}/>
   </Box>
 }
 

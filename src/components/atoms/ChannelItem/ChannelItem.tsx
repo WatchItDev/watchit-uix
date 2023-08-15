@@ -1,11 +1,12 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 import {
   styled,
   Box,
   BoxProps,
   Typography,
   TypographyProps
-} from "@mui/material";
+} from '@mui/material'
+import { withTheme } from '../../../hoc/withTheme'
 
 export type ChannelItemProps = {
   innerLetter: string
@@ -21,10 +22,10 @@ export type ChannelItemProps = {
 export const ChannelItem: FC<ChannelItemProps> = (props) : JSX.Element => {
 
   return (
-    <Box display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} sx={{ cursor: 'pointer' }}>
+    <Box display='flex' flexDirection='column' alignItems='center' justifyContent='center' sx={{ cursor: 'pointer' }}>
       <ChannelItemWrapper
         onClick={props.onClick} selected={!!props.selected}
-        data-testid={'channel-item-wrapper'}
+        data-testid='channel-item-wrapper'
         sx={{
           padding: props.borderWidth ? `${props.borderWidth}px` : '5px',
           width: `${props.size ?? 100}px`,
@@ -32,8 +33,8 @@ export const ChannelItem: FC<ChannelItemProps> = (props) : JSX.Element => {
         }}
       >
         <ChannelItemContent
-          display={'flex'} alignItems={'center'} justifyContent={'center'}
-          data-testid={'channel-item-content'}
+          display='flex' alignItems='center' justifyContent='center'
+          data-testid='channel-item-content'
           sx={{
             borderWidth: props.borderWidth ? `${props.borderWidth}px` : '5px',
             width: `calc(100% - ${props.borderWidth ?? 5}px)`,
@@ -46,7 +47,9 @@ export const ChannelItem: FC<ChannelItemProps> = (props) : JSX.Element => {
       </ChannelItemWrapper>
       {
         props.label ? (
-          <ChannelItemText fontSize={props.labelLetterSize} variant={'body1'}>{props.label}</ChannelItemText>
+          <ChannelItemText fontSize={props.labelLetterSize} variant='body1'>
+            {props.label}
+          </ChannelItemText>
         ) : <></>
       }
     </Box>
@@ -59,6 +62,7 @@ export const ChannelItemWrapper = styled(Box)<BoxProps & { selected: boolean }>(
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color: '#212328',
   '&:hover': {
     backgroundColor: 'rgba(209,210,211,0.5)'
   },
@@ -84,4 +88,4 @@ export const ChannelItemText = styled(Typography)<TypographyProps & { fontSize?:
   maxWidth: '100%'
 }))
 
-export default ChannelItem
+export default withTheme<ChannelItemProps>(ChannelItem)

@@ -1,48 +1,91 @@
-import React, { FC, useState, useEffect } from "react";
-import { styled, Box, BoxProps, Typography, Button } from "@mui/material";
-import Poster from "../Poster";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import React, { FC, useState, useEffect } from 'react'
+import { styled, Box, BoxProps, Typography, Button } from '@mui/material'
+import Poster from '../Poster'
+import { ChevronLeft, ChevronRight } from '@mui/icons-material'
+import { withTheme } from '../../../hoc/withTheme'
 
 export type MoviesProps = {
-  img:string
-  title:string
+  img: string
+  title: string
 }
 
 export type ControllerSliderProps = {
-  title?:string
-  movies:MoviesProps[]
-  onClick:any
+  title?: string
+  movies: MoviesProps[]
+  onClick: any
 }
 
-export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element => {
-  const [index,setIndex] = useState(0);
-  const [offsetWidth,setOffsetWidth] = useState(0);
-  const divRef = React.useRef<HTMLDivElement>(null);
+export const ControllerSlider: FC<ControllerSliderProps> = ( props ) : JSX.Element => {
+  const [ scrollLeft, setScrollLeft ] = useState(0)
+  const [ countDiv, setCountDiv ] = useState(0)
+
+  const container = React.useRef<HTMLDivElement>(null)
+  const carousel = React.useRef<HTMLDivElement>(null)
+
+  const handleScroll = (type:string)=>{
+    if(carousel.current !== null){ 
+      carousel.current.scrollLeft += 
+          type === 'right' 
+            ? (181 + 16) 
+            : -(181 + 16)
+      setScrollLeft(carousel.current.scrollLeft)
+      if(Math.ceil((carousel.current.scrollLeft)) 
+        >= ((carousel.current.scrollWidth - carousel.current.offsetWidth))) {
+          carousel.current.scrollLeft = 0
+          setScrollLeft(0)
+      }else if((((carousel.current.scrollWidth - (carousel.current.offsetWidth))) 
+        - (Math.ceil((carousel.current.scrollLeft)))) < (181+16) ) {
+        carousel.current.scrollLeft = 0
+        setScrollLeft(0)
+      } 
+  } 
+}
+  
+useEffect(() => {
+  const handleWindowResize = () => {
+    if (carousel.current !== null) {
+      let widthCar = carousel.current.offsetWidth / 181
+      setCountDiv(widthCar);
+    }
+  };
+    window.addEventListener('resize', handleWindowResize)
+    return () => window.removeEventListener('resize', handleWindowResize)
+}, [])
 
   useEffect(() => {
-    console.log('width', divRef.current ? divRef?.current?.offsetWidth : 0);
-    let width = divRef.current ? divRef?.current?.offsetWidth : 0
-    setOffsetWidth(width)
+    if (carousel.current !== null) {
+      let widthCar = carousel.current.offsetWidth / 181;
+      setCountDiv(widthCar);
+    }
   }, []);
 
-  const handleScroll = (type:string) =>{
-    let valid = ((offsetWidth) / 185) + ((index*-1)*((offsetWidth) * (0.15*(index*-1)))/185)
-    type == 'right' 
-    ? valid > props.movies.length+1 ? setIndex(0) : setIndex(index-1)
-    : setIndex(index+1)
-  }
-   
   return (
-    <Box sx={{width:'100%'}}>
-      <Box>
-        <SliderControllerTitle>
+    <Box sx={{ width:'100%' }}>
+      <Box sx={{ marginBottom: '15px' }}>
+        <Typography variant='text20bold'>
           {props.title}
-        </SliderControllerTitle>
+        </Typography>
       </Box>
-      <SliderControllerWrapper ref={divRef}>
-        <SliderControllerBox index={`${index}`}>
+      <SliderControllerWrapper ref={container}>
+        <SliderControllerBox 
+          ref={carousel}
+        >
           { 
-            props.movies.map( movie => {
+            props.movies.map( (movie:MoviesProps) => {
+              return(
+                <Poster 
+                  img={movie.img}
+                  title={movie.title}
+                  progress={50}
+                  year={2022}
+                  canHover={true} 
+                  onClick={ props.onClick }
+                />
+              )
+            })
+          }
+          { 
+            props.movies.slice(0,Math.ceil(countDiv-1)).map( (movie:MoviesProps) => {
               return(
                 <Poster img={movie.img}
                   title={movie.title}
@@ -55,51 +98,54 @@ export const ControllerSlider: FC<ControllerSliderProps> = (props) : JSX.Element
             })
           }
         </SliderControllerBox>
-        <ButtonSliderCustom right="0px" onClick={()=>handleScroll("right")}>
-          <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-            <ChevronRight sx={{color:'#D1D2D3'}}/>
+        <ButtonSliderCustom 
+          right='0px' onClick={() => handleScroll('right')}
+        >
+          <Box display='flex' alignItems='center' justifyContent='center'>
+            <ChevronRight sx={{color:'#D1D2D3'}} />
           </Box>
         </ButtonSliderCustom>
-        {index != 0 &&
-        <ButtonSliderCustom left="0px" onClick={()=>handleScroll("left")}>
-          <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-            <ChevronLeft sx={{color:'#D1D2D3'}}/>
-          </Box>
-        </ButtonSliderCustom>}
+        {scrollLeft > 0 &&
+          <ButtonSliderCustom 
+            left='0px' onClick={() => handleScroll('left')}
+          >
+            <Box display='flex' alignItems='center' justifyContent='center'>
+              <ChevronLeft sx={{color:'#D1D2D3'}} />
+            </Box>
+          </ButtonSliderCustom>
+        }
       </SliderControllerWrapper>
-    </Box>
+    </Box> 
   )
 }
 
-export const SliderControllerTitle = styled(Typography)(() => ({
-  fontSize: '20px',
-  fontWeight: 'bold',
-  color: '#D1D2D3',
-  marginBottom:'15px'
-}))
-
-export const SliderControllerWrapper = styled(Box)<BoxProps>(() => ({
-  display: 'flex',
+export const SliderControllerWrapper = styled( Box )<BoxProps>(() => ({
   position: 'relative',
   width: '100%',
-  overflow: 'hidden'
-}))
-export const SliderControllerBox = styled(Box)<BoxProps & { index: string }>((props) => ({
-  display: 'flex',
-  flexGrow: '1',
-  gap: '0 10px',
-  transform: `translateX(calc(${props.index} * 15%))`,
-  transition: 'transform 250ms ease-in-out',
 }))
 
-export const ButtonSliderCustom = styled(Button)<{ right?: string,left?: string }>((props) => ({
+export const SliderControllerBox = styled( Box )<BoxProps>(() => ({
+  display: 'grid',
+  gridAutoFlow: 'column',
+  gap: '16px',
+  overflowX: 'auto',
+  scrollSnapType: 'x mandatory',
+  scrollBarWidth: 'none',
+  '&::-webkit-scrollbar':{
+    display: 'none'
+  }
+}))
+
+export const ButtonSliderCustom = styled( Button )<{ right?: string, left?: string }>(( props ) => ({
   position: 'absolute',
+  width:'20px !important',
   borderRadius: '0 !important',
   top: '0',
   right: props.right ? props.right : '',
   left: props.left ? props.right : '',
   height: '100%',
-  background: 'rgba(0, 0, 0, 0.45)'
+  background: 'rgba(0, 0, 0, 0.45)',
+  color:'transparent !important'
 }))
 
-export default ControllerSlider
+export default withTheme<ControllerSliderProps>(ControllerSlider)
