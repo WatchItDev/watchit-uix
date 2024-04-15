@@ -1,5 +1,5 @@
 {
-  "name": "watchitapp-uix",
+  "name": "@watchitapp/watchitapp-uix",
   "version": "1.0.0",
   "description": "Watchit storybook UI/UX components",
   "scripts": {
