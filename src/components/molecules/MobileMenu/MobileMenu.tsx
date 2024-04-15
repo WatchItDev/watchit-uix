@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
-import { styled, Box, BoxProps } from '@mui/material'
-import { MobileMenuItem, MobileMenuItemProps } from '../../atoms/MobileMenuItem'
-import { withTheme } from '../../../hoc/withTheme'
+import React, { FC } from "react";
+import { withTheme } from '@src/hoc/withTheme'
+import { styled, Box, BoxProps } from "@mui/material";
+import { MobileMenuItem, MobileMenuItemProps } from "@atoms/MobileMenuItem";
 
 export type MobileMenuProps = {
   items: MobileMenuItemProps[]
@@ -9,17 +9,17 @@ export type MobileMenuProps = {
   onItemChange?: (id: string) => void
 }
 
-export const MobileMenu: FC<MobileMenuProps> = ( props ) : JSX.Element => {
+export const MobileMenu: FC<MobileMenuProps> = (props): JSX.Element => {
   return (
-      <MobileMenuWrapper>
-        {
-          props.items.map((el) => {
-            return (
-              <MobileMenuItem {...el} active={el.id === props.active} onClick={props.onItemChange} />
-            )
-          })
-        }
-      </MobileMenuWrapper>
+    <MobileMenuWrapper>
+      {
+        props.items.map((el) => {
+          return (
+            <MobileMenuItem {...el} active={el.id === props.active} onClick={props.onItemChange} />
+          )
+        })
+      }
+    </MobileMenuWrapper>
   )
 }
 

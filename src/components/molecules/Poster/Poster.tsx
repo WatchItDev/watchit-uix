@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
-import { styled, Box, BoxProps, Typography, TypographyProps } from '@mui/material'
-import ProgressBar from '../../atoms/ProgressBar'
-import { PlayArrow } from '@mui/icons-material'
-import CustomButton from '../../atoms/CustomButton'
-import { withTheme } from '../../../hoc/withTheme'
+import React, { FC } from "react";
+import {styled, Box, BoxProps, Typography, TypographyProps} from "@mui/material";
+import { withTheme } from '@src/hoc/withTheme'
+import { PlayArrow } from "@mui/icons-material";
+
+import CustomButton from '@atoms/CustomButton'
+import ProgressBar from "@atoms/ProgressBar";
 
 export type PosterProps = {
   img: string

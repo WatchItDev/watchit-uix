@@ -25,4 +25,3 @@ template
 jscpd/*
 coverage/
 coverage/*
-dist/

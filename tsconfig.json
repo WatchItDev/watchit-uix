@@ -13,7 +13,35 @@
       "outDir": "dist/esm",
       "sourceMap": true,
       "strict": true,
-      "target": "es6"
+      "target": "es6",
+      "baseUrl": "./",
+      "rootDir": "./",
+      "paths": {
+        "@src/*": [
+          "src/*"
+        ],
+        "@hooks/*": [
+          "src/hooks/*"
+        ],
+        "@config/*": [
+          "src/config/*"
+        ],
+        "@assets/*": [
+          "src/assets/*"
+        ],
+        "@styles/*": [
+          "src/styles/*"
+        ],
+        "@components/*": [
+          "src/components/*"
+        ],
+        "@atoms/*": [
+          "src/components/atoms/*"
+        ],
+        "@molecules/*": [
+          "src/components/molecules/*"
+        ]
+      }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": [
@@ -22,5 +50,4 @@
     "src/**/*.test.tsx",
     "src/**/*.stories.tsx"
   ]
-  
 }
