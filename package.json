@@ -1,14 +1,14 @@
 {
-  "name": "watchit_uix",
-  "version": "0.0.1",
-  "description": "Watchit UIX",
+  "name": "watchit-uix",
+  "version": "1.0.0",
+  "description": "Watchit storybook UI/UX components",
   "scripts": {
     "test": "jest --verbose --runInBand --detectOpenHandles --forceExit --coverage",
     "storybook": "start-storybook -p 6006",
     "start": "npx http-server ./storybook-static",
     "build-storybook": "build-storybook"
   },
-  "author": "Watchit Team",
+  "author": "Watchit@Team",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -51,7 +51,7 @@
     "registry": "https://npm.pkg.github.com/watchit"
   },
   "engines": {
-    "node": ">=16.14.0 <17"
+    "node": ">=18.0.0 <21"
   },
   "dependencies": {
     "@cfaester/enzyme-adapter-react-18": "^0.6.0",
