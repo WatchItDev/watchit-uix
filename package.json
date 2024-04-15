@@ -1,8 +1,7 @@
 {
-  "name": "@ZorrillosDev/watchit_uix",
-  "version": "0.0.85",
-  "description": "Watchit UIX",
-  "repository": "https://github.com/ZorrillosDev/watchit-uix.git",
+  "name": "watchit-uix",
+  "version": "1.0.0",
+  "description": "Watchit storybook UI/UX components",
   "scripts": {
     "test": "jest --verbose --runInBand --detectOpenHandles --forceExit --coverage",
     "storybook": "start-storybook -p 6006",
@@ -12,7 +11,7 @@
     "format": "npx eslint --fix \"src/*/.{js,ts,tsx}\"",
     "lint": "eslint \"src/*/.{js,ts,tsx}\""
   },
-  "author": "Watchit Team",
+  "author": "Watchit@Team",
   "license": "ISC",
   "peerDependencies": {
     "@babel/core": "^7.17.8",
@@ -133,7 +132,7 @@
     "registry": "https://npm.pkg.github.com/watchit-uix"
   },
   "engines": {
-    "node": ">=16.14.0 <17"
+    "node": ">=18.0.0 <21"
   },
   "dependencies": {
     "@emotion/styled": "^11.10.5",
