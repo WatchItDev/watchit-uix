@@ -22,7 +22,9 @@ export const Avatar: FC<AvatarProps> = ( props ) : JSX.Element => {
   )
 }
 
-export const AvatarContainer = styled( Box )<{ width: number, height: number, borderSize: number  }>(( props ) => ({
+export const AvatarContainer = styled(Box, {
+  shouldForwardProp: (prop) => (prop !== 'borderSize')
+})<{ width: number, height: number, borderSize: number  }>(( props ) => ({
   width: `${ props.width + props.borderSize }px`,
   height: `${ props.height + props.borderSize  }px`,
   display: 'flex',

@@ -177,7 +177,7 @@ export const VideoPlayer: FC<VideoPlayerProps> = ( props ) : JSX.Element => {
 
   useEffect(()=>{
     if (video.current !== null) {
-      props.autoPlay == true && video.current.play()
+      props.autoPlay && video.current.play()
       setShow(props.autoPlay)
     }
   },[])

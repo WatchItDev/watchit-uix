@@ -32,7 +32,11 @@ export const ListItem: FC<ListItemProps> = ( props ) : JSX.Element => {
       }
       { props.list.map(( item:Item ) => {
         return(
-          <ListItemWrapper onClick={ () => handleOnChange( item.id )}sx={{ paddingLeft:props.title ? '16px' : '0' }}>
+          <ListItemWrapper
+            key={item.id}
+            onClick={ () => handleOnChange( item.id )}
+            sx={{ paddingLeft:props.title ? '16px' : '0' }}
+          >
             <Typography 
                 variant='text14bold' noWrap
                 sx={{margin:'5px 0'}}

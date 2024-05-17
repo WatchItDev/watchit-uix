@@ -2,9 +2,11 @@ import React, { FC } from "react";
 import {styled, Box, BoxProps, Typography, TypographyProps} from "@mui/material";
 import { withTheme } from '@src/hoc/withTheme'
 import { PlayArrow } from "@mui/icons-material";
+import ContentLoader from 'react-content-loader'
 
 import CustomButton from '@atoms/CustomButton'
 import ProgressBar from "@atoms/ProgressBar";
+import RoundProgress from "@atoms/RoundProgress";
 
 export type PosterProps = {
   img: string
@@ -14,15 +16,39 @@ export type PosterProps = {
   rate?: number
   year?: number
   canHover?: boolean
+  empty?: boolean
+  end?: boolean
   onClick?: React.MouseEventHandler<HTMLDivElement>
   onPlayClick?: React.MouseEventHandler<HTMLButtonElement>
   size?: {
     width?: string,
     height?: string
   }
-} 
+}
+
+const primaryRateColors: { [key: string]: string } = {
+  'success': '#037015',
+  'warning': '#f59e0b',
+  'danger': '#ef4444'
+}
+
+const secondaryRateColors: { [key: string]: string } = {
+  'success': '#81ba83',
+  'warning': '#fef3c7',
+  'danger': '#fee2e2'
+}
+
+const rateColor = [
+  'danger',
+  'danger',
+  'warning',
+  'success',
+  'success'
+]
 
 export const Poster: FC<PosterProps> = ( props ) : JSX.Element => {
+  const color = rateColor[(props?.rate ?? 1) - 1]
+
   return (
     <PosterWrapper
       sx={{
@@ -32,9 +58,32 @@ export const Poster: FC<PosterProps> = ( props ) : JSX.Element => {
       }}
       data-testid='poster-wrapper'
     >
-      <PosterImage component='img' src={props.img} data-testid='poster-image' onClick={props.onClick} />
+      {props.empty && !props.end && <LoaderPoster />}
 
-      <PosterInfo className='info'>
+      <PosterImage
+          component='img' src={props.img}
+          data-testid='poster-image' onClick={props.onClick}
+          sx={{ opacity: props.empty ? 0 : 1, pointerEvents: props.empty ? 'none' : 'all' }}
+      />
+
+      <PosterRateWrapper
+          className='hover-show hover-show-flex'
+          sx={{ opacity: props.empty ? 0 : 1, pointerEvents: props.empty ? 'none' : 'all' }}
+      >
+        <RoundProgress
+            text={`${props.rate}`}
+            percentage={((props.rate ?? 0) / 5) * 100}
+            progressBackgroundColor={secondaryRateColors[color]}
+            progressBarColor={primaryRateColors[color]}
+            textColor={primaryRateColors[color]}
+            size={30}
+        />
+      </PosterRateWrapper>
+
+      <PosterInfo
+          className='info'
+          sx={{ opacity: props.empty ? 0 : 1, pointerEvents: props.empty ? 'none' : 'all' }}
+      >
         <Box sx={{ marginBottom:'0.5rem',width:'calc(100% - 1rem)', display:'flex', flexDirection:'column', alignItems:'center', height:'100%', justifyContent:'center' }}>
         <Box className='hover-show hover-show-flex' display='flex' alignItems='flex-end' justifyContent='space-between' sx={{ marginBottom: '5px', width:'100%' }}>
           <Typography variant='text12bold'>
@@ -53,6 +102,22 @@ export const Poster: FC<PosterProps> = ( props ) : JSX.Element => {
         </Box>
       </PosterInfo>
     </PosterWrapper>
+  )
+}
+
+export const LoaderPoster = (): React.JSX.Element => {
+  return (
+      <ContentLoader
+          style={{ top: 0, left: 0, bottom: 0, right: 0, position: 'absolute', zIndex: 1 }}
+          backgroundColor="#FFF"
+          foregroundColor="#ecebeb"
+          width={'100%'}
+          height={'100%'}
+          opacity={0.8}
+      >
+        { /* Create a rectangle full size */}
+        <rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
+      </ContentLoader>
   )
 }
 
@@ -76,6 +141,15 @@ const PosterWrapper = styled( Box )<BoxProps>(() => ({
       display: 'block'
     }
   }
+}))
+
+const PosterRateWrapper = styled( Box )<BoxProps>(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'absolute',
+  top: 10,
+  right: 10
 }))
 
 const PosterInfo = styled( Box )<BoxProps>(() => ({

@@ -15,7 +15,11 @@ export const MobileMenu: FC<MobileMenuProps> = (props): JSX.Element => {
       {
         props.items.map((el) => {
           return (
-            <MobileMenuItem {...el} active={el.id === props.active} onClick={props.onItemChange} />
+            <MobileMenuItem
+                key={el.id}
+                {...el}
+                active={el.id === props.active}
+                onClick={props.onItemChange} />
           )
         })
       }

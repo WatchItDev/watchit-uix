@@ -10,6 +10,7 @@ import { IconMenu2 } from "@tabler/icons";
 
 export type MenuProps = {
   isOpen: boolean
+  shouldShowItems: boolean
   items: MenuItemProps[]
   active: string
   onIsOpenChange?: () => void
@@ -23,27 +24,29 @@ export const Menu: FC<MenuProps> = (props): JSX.Element => {
     <MenuWrapper maxWidth={props.maxWidth} width={props.width} sx={{ backgroundColor: props.isOpen ? '#212328' : '#1A1C20' }}>
       <MenuHeader>
         <Logo size={100} />
-        <CustomButton
-          margin='0 1rem 0 0'
-          variant='flat'
-          height='40px'
-          width='40px'
-          icon={
-            <IconMenu2
-              style={{ color: '#D1D2D3' }}
-            />
-          }
-          backgroundColor='transparent'
-          onClick={props.onIsOpenChange}
-        />
+        {props.shouldShowItems &&
+          <CustomButton
+            margin='0 1rem 0 0'
+            variant='flat'
+            height='40px'
+            width='40px'
+            icon={
+              <IconMenu2
+                style={{ color: '#D1D2D3' }}
+              />
+            }
+            backgroundColor='transparent'
+            onClick={props.onIsOpenChange}
+          />
+        }
       </MenuHeader>
-      {props.isOpen &&
+      {props.isOpen && props.shouldShowItems &&
         <ItemsWrapper open={props.isOpen}>
           {
-            props.items.map((el, key) => {
+            props.items.map((el) => {
               return (
                 <MenuItem
-                  key={key}
+                  key={el.id}
                   {...el}
                   active={el.id === props.active}
                   onClick={props.onItemChange}

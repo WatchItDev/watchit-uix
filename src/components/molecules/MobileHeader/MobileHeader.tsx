@@ -52,7 +52,9 @@ export const MobileHeader: FC<MobileHeaderProps> = (props): JSX.Element => {
   )
 }
 
-export const MobileHeaderWrapper = styled(Box)<BoxProps & { active?: boolean }>((props) => ({
+export const MobileHeaderWrapper = styled(Box, {
+    shouldForwardProp: (prop) => (prop !== 'active')
+})<BoxProps & { active?: boolean }>((props) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

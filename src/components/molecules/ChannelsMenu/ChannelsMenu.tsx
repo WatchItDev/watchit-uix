@@ -16,16 +16,16 @@ export const ChannelsMenu: FC<ChannelsMenuProps> = ( props ) : JSX.Element => {
   return (
     <ChannelMenuWrapper open={props.isOpen}>
       <ChannelItemWrapper>
-      <Grid container justifyContent='center' spacing={1}>
+        <Grid container justifyContent='center' spacing={1}>
           { props.users.slice(0, props.isOpen ? 3 : 1).map( (user:any, index:any) => {
             return(
-              <Grid item xs={ 12 } >
+              <Grid item xs={ 12 } key={index}>
                 <ChannelItem 
                   innerLetter={user} 
                   size={ 40 } 
                   labelLetterSize='0.5rem'
                   innerLetterSize={ 15 } 
-                  selected={ index == 0 ? true : false } 
+                  selected={ index === 0 }
                   borderWidth={ 2 }
                   onClick={ ()=>console.log('test') }
                 />
